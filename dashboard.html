@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Device Control Panel - Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navigation">
+            <ul>
+                <li><a href="index.html">Index</a></li>
+                <li><a class="active" href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <!-- Devices Overview Card -->
+            <section class="card">
+                <img src="assets/icons/devices.png" alt="Device 1 Icon" class="card-icon">
+                <h3>Devices Overview</h3>
+                <ul class="devices-overview-list">
+                    <li>Lights: Active</li>
+                    <li>Thermostat: Inactive</li>
+                    <li>Cameras: Active</li>
+                </ul>
+            </section>
+
+            <!-- Individual Device Statuses -->
+            <section class="card">
+                <img src="assets/icons/lights.png" alt="Device 1 Icon" class="card-icon">
+                <h3>Lights</h3>
+                <ul class="device-status-list">
+                    <li>Status: Active</li>
+                    <li>Battery: 85%</li>
+                    <li>Temperature: 25°C</li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <img src="assets/icons/thermostat.png" alt="Device 2 Icon" class="card-icon">
+                <h3>Thermostat</h3>
+                <ul class="device-status-list">
+                    <li>Status: Inactive</li>
+                    <li>Battery: 95%</li>
+                    <li>Temperature: 22°C</li>
+                </ul>
+            </section>
+            
+            <!-- Add other device status cards similarly -->
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 IoTDeviceControlPanel. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

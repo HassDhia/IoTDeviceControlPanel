@@ -1,63 +1,70 @@
+// Constants for device states
+const OFFLINE = 0;
+const ONLINE = 1;
+const LOCKED = 2;
+const UNLOCKED = 3;
+
+// Initial device states
+let deviceStates = {
+    light: ONLINE,
+    thermostat: ONLINE,
+    doorlock: LOCKED
+};
+
+// Event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    // Placeholder data: Represents IoT device statuses
-    const devices = {
-        light: false, // off
-        thermostat: 22, // 22°C
-        doorLock: true, // locked
-    };
-
-    // Initialize event listeners
-    initEventListeners();
-
-    // Toggle device status on click
-    function initEventListeners() {
-        const deviceStatusElements = document.querySelectorAll('.device-status');
-        deviceStatusElements.forEach(element => {
-            element.addEventListener('click', toggleDeviceStatus);
-        });
-
-        const lightButton = document.getElementById('toggle-light');
-        lightButton.addEventListener('click', function() {
-            devices.light = !devices.light; // Toggle light status
-            updateDashboard();
-        });
-
-        const thermostatInput = document.getElementById('set-thermostat');
-        thermostatInput.addEventListener('change', function(e) {
-            devices.thermostat = e.target.value;
-            updateDashboard();
-        });
-
-        const doorLockButton = document.getElementById('toggle-doorLock');
-        doorLockButton.addEventListener('click', function() {
-            devices.doorLock = !devices.doorLock; // Toggle lock status
-            updateDashboard();
-        });
-    }
-
-    // Function to update the dashboard/UI based on device statuses
-    function updateDashboard() {
-        const lightStatus = document.getElementById('light-status');
-        lightStatus.textContent = devices.light ? 'On' : 'Off';
-
-        const thermostatStatus = document.getElementById('thermostat-status');
-        thermostatStatus.textContent = `${devices.thermostat}°C`;
-
-        const doorLockStatus = document.getElementById('doorLock-status');
-        doorLockStatus.textContent = devices.doorLock ? 'Locked' : 'Unlocked';
-    }
-
-    function toggleDeviceStatus(event) {
-        const statusElement = event.target;
-        if (statusElement.innerText === 'Online') {
-            statusElement.innerText = 'Offline';
-            statusElement.style.color = 'red';
-        } else {
-            statusElement.innerText = 'Online';
-            statusElement.style.color = 'green';
-        }
-    }
-
-    // Initial dashboard update
+    attachEventListeners();
     updateDashboard();
 });
+
+// Attach necessary event listeners to DOM elements
+function attachEventListeners() {
+    // Toggle device status on click
+    document.querySelectorAll('.device-status').forEach(statusElement => {
+        statusElement.addEventListener('click', toggleDeviceStatus);
+    });
+
+    // Add specific listeners for other devices if they exist in the HTML
+    const thermostatInput = document.getElementById('thermostat-input');
+    if (thermostatInput) {
+        thermostatInput.addEventListener('change', handleThermostatChange);
+    }
+
+    const toggleDoorlock = document.getElementById('toggle-doorlock');
+    if (toggleDoorlock) {
+        toggleDoorlock.addEventListener('click', handleDoorlockToggle);
+    }
+}
+
+// Toggle the status of a device and update dashboard
+function toggleDeviceStatus(event) {
+    let deviceName = event.target.id.split('-')[1];
+    deviceStates[deviceName] = deviceStates[deviceName] === ONLINE ? OFFLINE : ONLINE;
+    updateDashboard();
+}
+
+// Handle thermostat input change
+function handleThermostatChange(event) {
+    // This function can be extended to handle specific thermostat actions
+}
+
+// Handle doorlock toggle button click
+function handleDoorlockToggle(event) {
+    deviceStates.doorlock = deviceStates.doorlock === LOCKED ? UNLOCKED : LOCKED;
+    updateDashboard();
+}
+
+// Update the dashboard based on device states
+function updateDashboard() {
+    Object.keys(deviceStates).forEach(deviceName => {
+        let statusElement = document.getElementById(`status-${deviceName}`);
+        if (statusElement) {
+            if (deviceName === 'doorlock') {
+                statusElement.textContent = deviceStates[deviceName] === LOCKED ? 'Locked' : 'Unlocked';
+            } else {
+                statusElement.textContent = deviceStates[deviceName] === ONLINE ? 'Online' : 'Offline';
+                statusElement.style.color = deviceStates[deviceName] === ONLINE ? 'green' : 'red';
+            }
+        }
+    });
+}

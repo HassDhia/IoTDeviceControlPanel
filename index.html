@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IoT Device Control Panel</title>
+    <title>IoT Device Control Panel - Welcome</title>
     <link rel="stylesheet" href="main.css">
-    <!-- Add a modern font -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <!-- Navigation -->
-        <nav>
+        <nav class="navigation">
             <ul>
-                <li class="active"><a href="#">Dashboard</a></li>
-                <li><a href="#">Devices</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="devices.html">Devices</a></li>
+                <li><a href="settings.html">Settings</a></li>
             </ul>
         </nav>
 
-        <!-- Main Content -->
-        <main>
+        <!-- Main content -->
+        <main class="main-content">
+            <!-- Welcome Card -->
             <section class="card">
-                <h2><img src="/path/to/temperature/icon.svg" alt="Temperature Icon"> Temperature</h2>
-                <p>Current: 22°C</p>
+                <h2>Welcome to IoT Device Control Panel</h2>
+                <p>Please login or register to manage your devices.</p>
             </section>
 
+            <!-- Login Card -->
             <section class="card">
-                <h2><img src="/path/to/humidity/icon.svg" alt="Humidity Icon"> Humidity</h2>
-                <p>Current: 50%</p>
+                <h3>Login</h3>
+                <form action="auth.js" method="POST">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login">
+                </form>
             </section>
 
+            <!-- Registration Card -->
             <section class="card">
-                <h2><img src="/path/to/device/icon.svg" alt="Devices Icon"> Connected Devices</h2>
-                <ul>
-                    <li><img src="/path/to/online/icon.svg" alt="Online Icon"> Device 1 - Status: Online</li>
-                    <li><img src="/path/to/offline/icon.svg" alt="Offline Icon"> Device 2 - Status: Offline</li>
-                </ul>
-            </section>
-
-            <!-- Add a settings card for completeness -->
-            <section class="card">
-                <h2><img src="/path/to/settings/icon.svg" alt="Settings Icon"> Settings</h2>
-                <p>Manage your device configurations here.</p>
+                <h3>Register</h3>
+                <form action="register.js" method="POST">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Register">
+                </form>
             </section>
         </main>
 
         <!-- Footer -->
         <footer>
-            <p>© 2023 IoTDeviceControlPanel. All Rights Reserved.</p>
+            <p>&copy; 2023 IoTDeviceControlPanel. All Rights Reserved.</p>
         </footer>
     </div>
+
     <script src="main.js"></script>
 </body>
+
 </html>

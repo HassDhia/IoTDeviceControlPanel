@@ -20,23 +20,15 @@ body {
     overflow: hidden;
 }
 
-/* Navigation */
-nav {
-    background-color: #26A7DE;
-}
-
-nav ul {
-    list-style-type: none;
+/* Navigation styles */
+.navigation {
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
+    background-color: #26A7DE;
 }
 
-nav li {
-    margin: 0 15px;
-}
-
-nav a {
+.navigation a {
     text-decoration: none;
     color: white;
     font-weight: 500;
@@ -45,12 +37,12 @@ nav a {
     transition: background-color 0.3s;
 }
 
-nav a:hover, nav .active a {
+.navigation a.active, .navigation a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Main content */
-main {
+/* Main content styles */
+.main-content {
     padding: 20px;
     display: grid;
     gap: 20px;
@@ -65,34 +57,55 @@ main {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card-icon {
+    width: 50px;  /* Adjust width as desired */
+    height: 50px; /* Adjust height as desired */
+    object-fit: cover; /* This ensures the image maintains its aspect ratio and doesn't get skewed/stretched */
+    display: block; /* To remove any extra spacing around the image */
+}
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-.card h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
+h2, h3 {
+    color: #26A7DE;
+    margin-bottom: 10px;
+}
+
+.current-data {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #2A2A2A;
+}
+
+.device-status-list, .settings-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.device-status-list li, .settings-list li {
     display: flex;
     align-items: center;
-    color: #26A7DE;
-}
-
-.card h2 img {
-    margin-right: 10px;
-    width: 24px;
-    height: 24px;
-}
-
-.card p, .card li {
+    justify-content: space-between;
     margin-bottom: 10px;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 15px 0;
+    padding: 20px;
     background-color: #e8ecef;
     font-size: 14px;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .main-content {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
