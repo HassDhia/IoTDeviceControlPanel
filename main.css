@@ -46,7 +46,6 @@ body {
     padding: 20px;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .card {
@@ -58,10 +57,10 @@ body {
 }
 
 .card-icon {
-    width: 50px;  /* Adjust width as desired */
-    height: 50px; /* Adjust height as desired */
-    object-fit: cover; /* This ensures the image maintains its aspect ratio and doesn't get skewed/stretched */
-    display: block; /* To remove any extra spacing around the image */
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    display: block;
 }
 
 .card:hover {
@@ -85,11 +84,71 @@ h2, h3 {
     padding: 0;
 }
 
-.device-status-list li, .settings-list li {
+.devices-overview-section {
+    grid-column: 1 / -1;
+    width: 100%;
+    background: linear-gradient(120deg, #65cdf6, #89e2e8);
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.devices-overview-card {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.devices-overview-card h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    order:     1;  /* Make sure the title always stays on top */
+}
+
+.device-overview {
+    flex: 1;  /* Each device takes equal width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px; /* Some spacing around each device */
+    transition: transform 0.3s;
+    order: 2; /* Make sure devices are below the title */
+}
+
+.device-overview:hover {
+    transform: translateY(-10px); /* Move up a bit on hover */
+}
+
+.device-icon {
+    width: 50px;
+    height: 50px;
     margin-bottom: 10px;
+}
+
+.device-name {
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.device-status {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.active-status {
+    color: #4CAF50; /* Green color for active devices */
+}
+
+.inactive-status {
+    color: #FF5252; /* Red color for inactive devices */
 }
 
 /* Footer */
@@ -100,12 +159,30 @@ footer {
     font-size: 14px;
 }
 
-/* Responsive styles */
+/* ... (previous styles) ... */
+
+/* ... (all previous styles) ... */
+
+.main-content {
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This allows the cards to be responsive */
+}
+
+.devices-overview-section {
+    grid-column: 1 / -1; /* Makes the Devices Overview card span the entire grid width */
+}
+
+/* Adjusting the grid on smaller screens */
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
     .main-content {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .main-content {
+        grid-template-columns: 1fr;
     }
 }

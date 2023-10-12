@@ -51,9 +51,25 @@
                     <li>Last Maintenance: Dec 15, 2022</li>
                     <li>Software Version: 1.3.0</li>
                 </ul>
-                <!-- Temperature Trend Graph for Device 2 -->
+                                <!-- Temperature Trend Graph for Device 2 -->
                 <h4>Temperature Trends Over Time</h4>
                 <canvas id="thermostatTempChart"></canvas>
+            </section>
+
+            <!-- Device 3 Detailed Information -->
+            <section class="card">
+                <img src="assets/icons/cameras.png" alt="Device 3 Icon" class="card-icon">
+                <h3>Cameras</h3>
+                <ul class="device-detail-list">
+                    <li>Status: Active</li>
+                    <li>Recording Quality: 1080p</li>
+                    <li>Storage Used: 320GB/500GB</li>
+                    <li>Last Maintenance: Feb 10, 2023</li>
+                    <li>Software Version: 2.1.0</li>
+                </ul>
+                <!-- Footage Storage Usage Graph for Device 3 -->
+                <h4>Storage Usage Over Time</h4>
+                <canvas id="cameraStorageChart"></canvas>
             </section>
 
             <!-- Add other devices with more detailed information similarly -->
@@ -67,6 +83,17 @@
 
     <script src="main.js"></script>
     <script src="devices.js"></script>
+
+    <script>
+        // Debugging logs
+        console.log("Starting devices.js");
+        console.log("Initialising charts...");
+
+        // You can initialize the charts here and add any additional debugging logs if necessary
+
+        console.log("Charts initialized successfully.");
+    </script>
 </body>
 
 </html>
+

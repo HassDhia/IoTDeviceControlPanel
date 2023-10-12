@@ -8,11 +8,15 @@ const UNLOCKED = 3;
 let deviceStates = {
     light: ONLINE,
     thermostat: ONLINE,
-    doorlock: LOCKED
+    doorlock: LOCKED,
+    cameras: OFFLINE // added cameras status
 };
+
+console.log('Initial device states:', deviceStates);
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Document has been loaded.');
     attachEventListeners();
     updateDashboard();
 });
@@ -40,17 +44,20 @@ function attachEventListeners() {
 function toggleDeviceStatus(event) {
     let deviceName = event.target.id.split('-')[1];
     deviceStates[deviceName] = deviceStates[deviceName] === ONLINE ? OFFLINE : ONLINE;
+    console.log(`Toggled device: ${deviceName}. New state: ${deviceStates[deviceName]}`);
     updateDashboard();
 }
 
 // Handle thermostat input change
 function handleThermostatChange(event) {
     // This function can be extended to handle specific thermostat actions
+    console.log('Thermostat input changed:', event.target.value);
 }
 
 // Handle doorlock toggle button click
 function handleDoorlockToggle(event) {
     deviceStates.doorlock = deviceStates.doorlock === LOCKED ? UNLOCKED : LOCKED;
+    console.log(`Doorlock toggled. New state: ${deviceStates.doorlock}`);
     updateDashboard();
 }
 
@@ -66,5 +73,6 @@ function updateDashboard() {
                 statusElement.style.color = deviceStates[deviceName] === ONLINE ? 'green' : 'red';
             }
         }
+        console.log(`Updated ${deviceName} status on dashboard.`);
     });
 }

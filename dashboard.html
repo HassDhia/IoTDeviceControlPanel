@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" data-debug="Main Container">
         <!-- Navigation -->
-        <nav class="navigation">
+        <nav class="navigation" data-debug="Navigation">
             <ul>
                 <li><a href="index.html">Index</a></li>
                 <li><a class="active" href="dashboard.html">Dashboard</a></li>
@@ -22,44 +22,69 @@
         </nav>
 
         <!-- Main content -->
-        <main class="main-content">
+        <main class="main-content" data-debug="Main Content">
             <!-- Devices Overview Card -->
-            <section class="card">
-                <img src="assets/icons/devices.png" alt="Device 1 Icon" class="card-icon">
-                <h3>Devices Overview</h3>
-                <ul class="devices-overview-list">
-                    <li>Lights: Active</li>
-                    <li>Thermostat: Inactive</li>
-                    <li>Cameras: Active</li>
-                </ul>
+            <section class="devices-overview-section">
+                <div class="devices-overview-card">
+                    <h2>Devices Overview</h2>
+                    <div class="device-overview" id="lights-overview">
+                        <img src="assets/icons/lights.png" alt="Lights Icon" class="device-icon">
+                        <p class="device-name">Lights</p>
+                        <p class="device-status active-status">Active</p>
+                    </div>
+                    <div class="device-overview" id="thermostat-overview">
+                        <img src="assets/icons/thermostat.png" alt="Thermostat Icon" class="device-icon">
+                        <p class="device-name">Thermostat</p>
+                        <p class="device-status inactive-status">Inactive</p>
+                    </div>
+                    <div class="device-overview" id="cameras-overview">
+                        <img src="assets/icons/cameras.png" alt="Cameras Icon" class="device-icon">
+                        <p class="device-name">Cameras</p>
+                        <p class="device-status active-status">Active</p>
+                    </div>
+                </div>
             </section>
 
+
+
+
             <!-- Individual Device Statuses -->
-            <section class="card">
+            <section class="card" id="lights-card" data-debug="Lights Card">
                 <img src="assets/icons/lights.png" alt="Device 1 Icon" class="card-icon">
                 <h3>Lights</h3>
                 <ul class="device-status-list">
-                    <li>Status: Active</li>
-                    <li>Battery: 85%</li>
-                    <li>Temperature: 25°C</li>
+                    <li data-debug="Lights Main Status">Status: Active</li>
+                    <li data-debug="Lights Battery">Battery: 85%</li>
+                    <li data-debug="Lights Temperature">Temperature: 25°C</li>
                 </ul>
             </section>
 
-            <section class="card">
-                <img src="assets/icons/thermostat.png" alt="Device 2 Icon" class="card-icon">
+            <section class="card" id="thermostat-card" data-debug="Thermostat Card">
+                                <img src="assets/icons/thermostat.png" alt="Device 2 Icon" class="card-icon">
                 <h3>Thermostat</h3>
                 <ul class="device-status-list">
-                    <li>Status: Inactive</li>
-                    <li>Battery: 95%</li>
-                    <li>Temperature: 22°C</li>
+                    <li data-debug="Thermostat Main Status">Status: Inactive</li>
+                    <li data-debug="Thermostat Battery">Battery: 95%</li>
+                    <li data-debug="Thermostat Temperature">Temperature: 22°C</li>
                 </ul>
             </section>
-            
+
             <!-- Add other device status cards similarly -->
+            <!-- Example: Cameras -->
+            <section class="card" id="cameras-card" data-debug="Cameras Card">
+                <img src="assets/icons/cameras.png" alt="Cameras Icon" class="card-icon">
+                <h3>Cameras</h3>
+                <ul class="device-status-list">
+                    <li data-debug="Cameras Main Status">Status: Active</li>
+                    <li data-debug="Cameras Battery">Battery: 80%</li>
+                    <li data-debug="Cameras Resolution">Resolution: 1080p</li>
+                </ul>
+            </section>
+
         </main>
 
         <!-- Footer -->
-        <footer>
+        <footer data-debug="Footer">
             <p>&copy; 2023 IoTDeviceControlPanel. All Rights Reserved.</p>
         </footer>
     </div>
@@ -69,3 +94,4 @@
 </body>
 
 </html>
+
